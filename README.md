@@ -34,21 +34,48 @@ This makes the portfolio simple to maintain: portfolio data can be edited direct
 
 ## Run
 
-Install the .NET 10 SDK, then:
+Option A — Run locally with the .NET 10 SDK
+
+1. Install the .NET 10 SDK from https://dotnet.microsoft.com/en-us/download/dotnet/10.0
+2. Open a new terminal and verify:
+
+```powershell
+dotnet --version
+dotnet --list-sdks
+```
+
+3. Build and run the backend:
 
 ```bash
 cd backend
 dotnet restore
+dotnet build
 dotnet run
 ```
 
-Swagger is available at:
+Swagger is usually available at `http://localhost:5000/swagger` (use the URL printed by the app).
 
-```text
-http://localhost:5000/swagger
+Option B — Run with Docker (recommended when you don't have `dotnet` locally)
+
+1. Install Docker Desktop for Windows.
+2. From the repository root run:
+
+```bash
+docker compose up --build
 ```
 
-The exact local URL printed by ASP.NET Core should be used if a different port is selected.
+The backend container maps port `8080` by default; open `http://localhost:8080/swagger`.
+
+Helper script
+
+There's a helper in `backend/run-dev.ps1` that will prefer Docker if available and fall back to `dotnet`:
+
+```powershell
+# from backend folder
+./run-dev.ps1 -UseDocker     # force Docker
+./run-dev.ps1 -UseDotnet     # force local dotnet
+./run-dev.ps1                # auto-detect
+```
 
 ## Configuration
 
