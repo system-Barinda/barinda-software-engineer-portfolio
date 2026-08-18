@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Test results
+TestResults/
+coverage/
+
+# Local secrets
+.env
+appsettings.Local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated files
+backend/data/contact-messages.local.json

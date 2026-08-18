@@ -1,0 +1,15 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "title": "Car Sharing Backend",
+    "slug": "car-sharing-backend",
+    "summary": "A backend system for managing users, cars and bookings.",
+    "description": "Replace this description with the real project case study, architecture decisions, challenges and results.",
+    "technologies": ["TypeScript", "Node.js", "PostgreSQL", "Docker", "Jest"],
+    "features": ["User management", "Car management", "Booking management", "Authorization", "Integration testing"],
+    "image": "/images/car-sharing.jpg",
+    "githubUrl": "https://github.com/your-username/your-repository",
+    "liveUrl": null,
+    "featured": true
+  }
+]
