@@ -1,0 +1,55 @@
+[
+  {
+    "id": "experience-1",
+    "role": "Software Engineer",
+    "company": "Your Company",
+    "location": "Rwanda",
+    "period": "2025 - Present",
+    "type": "Full-time",
+    "description": "Developing and maintaining web applications and backend services while collaborating with other engineers to deliver reliable software.",
+    "responsibilities": [
+      "Design and implement REST APIs.",
+      "Develop reusable frontend components using React and TypeScript.",
+      "Implement business logic and validation.",
+      "Work with relational databases and data persistence.",
+      "Write unit and integration tests.",
+      "Review code and participate in technical discussions.",
+      "Debug production and development issues.",
+      "Collaborate with team members using Git and GitHub."
+    ],
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "C#",
+      "PostgreSQL",
+      "Git"
+    ]
+  },
+  {
+    "id": "experience-2",
+    "role": "Software Engineering Intern / Junior Developer",
+    "company": "Your Previous Company",
+    "location": "Rwanda",
+    "period": "2024 - 2025",
+    "type": "Internship",
+    "description": "Worked on software development tasks while improving practical knowledge of web development, APIs, databases and collaborative software engineering.",
+    "responsibilities": [
+      "Implemented application features.",
+      "Fixed bugs and improved existing functionality.",
+      "Worked with REST APIs.",
+      "Created reusable components.",
+      "Worked with databases.",
+      "Participated in code reviews.",
+      "Used Git for version control."
+    ],
+    "technologies": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "SQL",
+      "Git"
+    ]
+  }
+]

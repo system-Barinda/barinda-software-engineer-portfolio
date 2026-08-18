@@ -1,0 +1,26 @@
+{
+  "name": "Barinda System Sylvere",
+  "firstName": "Barinda",
+  "lastName": "System Sylvere",
+  "headline": "Software Engineer",
+  "tagline": "Building reliable, scalable and maintainable software.",
+  "summary": "I am a software engineer passionate about building reliable web applications, well-designed APIs and maintainable software systems. I enjoy solving complex problems, learning new technologies and continuously improving my engineering skills.",
+  "location": "Rwanda",
+  "availability": "Available for opportunities",
+  "email": "your-email@example.com",
+  "phone": "",
+  "githubUrl": "https://github.com/YOUR_USERNAME",
+  "linkedInUrl": "https://www.linkedin.com/in/YOUR_USERNAME",
+  "twitterUrl": "",
+  "cvUrl": "",
+  "profileImage": "/data/images/profile.jpg",
+  "yearsOfExperience": 2,
+  "primarySkills": [
+    "TypeScript",
+    "React",
+    "Node.js",
+    "C#",
+    "ASP.NET Core",
+    "PostgreSQL"
+  ]
+}

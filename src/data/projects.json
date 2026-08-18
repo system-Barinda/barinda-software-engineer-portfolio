@@ -1,0 +1,87 @@
+[
+  {
+    "id": "project-1",
+    "title": "Car Sharing Platform",
+    "slug": "car-sharing-platform",
+    "summary": "A full-stack car-sharing platform for managing users, cars, bookings and authorization.",
+    "description": "A software system designed to manage car sharing operations, including users, vehicles, bookings and access control. The project focuses on backend architecture, API design, validation, authorization and automated testing.",
+    "category": "Full Stack",
+    "featured": true,
+    "image": "/data/images/car-sharing.png",
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "REST API",
+      "PostgreSQL",
+      "Docker",
+      "Jest"
+    ],
+    "features": [
+      "User management",
+      "Car management",
+      "Booking management",
+      "Authentication",
+      "Authorization",
+      "Input validation",
+      "Error handling",
+      "Unit testing",
+      "Integration testing"
+    ],
+    "githubUrl": "https://github.com/YOUR_USERNAME/YOUR_REPOSITORY",
+    "liveUrl": "",
+    "status": "Completed"
+  },
+  {
+    "id": "project-2",
+    "title": "Library Dashboard",
+    "slug": "library-dashboard",
+    "summary": "A responsive dashboard for managing and visualizing library information.",
+    "description": "A modern dashboard application focused on responsive UI development, reusable React components, API integration and efficient data management.",
+    "category": "Frontend",
+    "featured": true,
+    "image": "/data/images/library-dashboard.png",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Router",
+      "React Query",
+      "Axios"
+    ],
+    "features": [
+      "Responsive dashboard",
+      "Book management",
+      "Search and filtering",
+      "Reusable components",
+      "API integration",
+      "Responsive sidebar",
+      "Mobile navigation"
+    ],
+    "githubUrl": "https://github.com/YOUR_USERNAME/YOUR_REPOSITORY",
+    "liveUrl": "",
+    "status": "Completed"
+  },
+  {
+    "id": "project-3",
+    "title": "Software Engineer Portfolio",
+    "slug": "software-engineer-portfolio",
+    "summary": "A professional portfolio demonstrating frontend development, software engineering principles and project experience.",
+    "description": "A responsive personal portfolio built to present my engineering experience, technical skills, projects and professional background.",
+    "category": "Frontend",
+    "featured": true,
+    "image": "/data/images/portfolio.png",
+    "technologies": ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    "features": [
+      "Responsive design",
+      "Project showcase",
+      "Skills presentation",
+      "Experience timeline",
+      "Contact form",
+      "Modern UI",
+      "Mobile navigation"
+    ],
+    "githubUrl": "https://github.com/YOUR_USERNAME/barinda-software-engineer-portfolio",
+    "liveUrl": "",
+    "status": "In Development"
+  }
+]

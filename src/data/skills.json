@@ -1,0 +1,170 @@
+[
+  {
+    "category": "Programming Languages",
+    "description": "Languages I use to build applications and solve engineering problems.",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "level": "Advanced"
+      },
+      {
+        "name": "JavaScript",
+        "level": "Advanced"
+      },
+      {
+        "name": "C#",
+        "level": "Intermediate"
+      },
+      {
+        "name": "SQL",
+        "level": "Intermediate"
+      },
+      {
+        "name": "HTML",
+        "level": "Advanced"
+      },
+      {
+        "name": "CSS",
+        "level": "Advanced"
+      }
+    ]
+  },
+  {
+    "category": "Frontend Development",
+    "description": "Building responsive, accessible and maintainable user interfaces.",
+    "skills": [
+      {
+        "name": "React",
+        "level": "Advanced"
+      },
+      {
+        "name": "TypeScript",
+        "level": "Advanced"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "Advanced"
+      },
+      {
+        "name": "React Router",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Responsive Design",
+        "level": "Advanced"
+      }
+    ]
+  },
+  {
+    "category": "Backend Development",
+    "description": "Designing APIs, business logic and backend services.",
+    "skills": [
+      {
+        "name": "Node.js",
+        "level": "Intermediate"
+      },
+      {
+        "name": "REST APIs",
+        "level": "Advanced"
+      },
+      {
+        "name": "ASP.NET Core",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Authentication",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Authorization",
+        "level": "Intermediate"
+      },
+      {
+        "name": "API Design",
+        "level": "Advanced"
+      }
+    ]
+  },
+  {
+    "category": "Databases",
+    "description": "Working with structured data and persistence systems.",
+    "skills": [
+      {
+        "name": "PostgreSQL",
+        "level": "Intermediate"
+      },
+      {
+        "name": "MySQL",
+        "level": "Intermediate"
+      },
+      {
+        "name": "SQL",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Database Design",
+        "level": "Intermediate"
+      }
+    ]
+  },
+  {
+    "category": "Software Engineering",
+    "description": "Practices that help me build maintainable and reliable software.",
+    "skills": [
+      {
+        "name": "Clean Code",
+        "level": "Advanced"
+      },
+      {
+        "name": "Clean Architecture",
+        "level": "Intermediate"
+      },
+      {
+        "name": "SOLID Principles",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Unit Testing",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Integration Testing",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Code Review",
+        "level": "Advanced"
+      }
+    ]
+  },
+  {
+    "category": "DevOps & Tools",
+    "description": "Tools I use to develop, test and deliver software.",
+    "skills": [
+      {
+        "name": "Git",
+        "level": "Advanced"
+      },
+      {
+        "name": "GitHub",
+        "level": "Advanced"
+      },
+      {
+        "name": "Docker",
+        "level": "Intermediate"
+      },
+      {
+        "name": "GitHub Actions",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Linux",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Postman",
+        "level": "Advanced"
+      }
+    ]
+  }
+]
