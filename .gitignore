@@ -1,24 +1,5 @@
-# .NET
-bin/
-obj/
-.vs/
-*.user
-*.suo
-
-# Rider
-.idea/
-
-# Test results
-TestResults/
-coverage/
-
-# Local secrets
+node_modules/
+dist/
+.vite/
 .env
-appsettings.Local.json
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Generated files
-backend/data/contact-messages.local.json
+.env.local

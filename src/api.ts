@@ -1,0 +1,4 @@
+import type {Experience,Profile,Project,Skill} from "./types";
+async function get<T>(path:string):Promise<T>{const r=await fetch(path);if(!r.ok)throw Error("API request failed");return r.json();}
+export const getProfile=()=>get<Profile>("/api/profile");export const getSkills=()=>get<Skill[]>("/api/skills");export const getExperiences=()=>get<Experience[]>("/api/experiences");export const getProjects=()=>get<Project[]>("/api/projects");
+export const sendContact=(body:Record<string,string>)=>fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});

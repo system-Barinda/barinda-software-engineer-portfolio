@@ -1,0 +1,3 @@
+export type Project={id:string;title:string;slug:string;summary:string;description:string;technologies:string[];features:string[];image?:string|null;githubUrl?:string|null;liveUrl?:string|null;featured:boolean};
+export type Profile={name:string;headline:string;summary:string;location:string;email?:string;githubUrl?:string;linkedInUrl?:string;cvUrl?:string};
+export type Skill={category:string;items:string[]}; export type Experience={id:string;role:string;company:string;period:string;description:string;achievements:string[]};
