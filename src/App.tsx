@@ -5,7 +5,7 @@ import {
   Code2,
   Database,
   Globe2,
-  Github,
+  // Github,
   Mail,
   MapPin,
   Menu,
@@ -441,7 +441,7 @@ function App() {
 
                 {profile.githubUrl && (
                   <a href={profile.githubUrl} target="_blank" rel="noreferrer">
-                    <Github />
+                    {/* <Github /> */}
                     GitHub
                     <ArrowUpRight />
                   </a>
@@ -590,7 +590,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="projectLinks">
           {project.githubUrl && (
             <a href={project.githubUrl} target="_blank" rel="noreferrer">
-              <Github />
+              {/* <Github /> */}
               Code
             </a>
           )}
