@@ -1,24 +1,22 @@
-# Complete local run
+# Barinda Software Engineer Portfolio
 
-## Backend
+A professional software engineering portfolio built with:
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React
+- JSON-based portfolio content
+
+---
+
+## Run Locally
+
+### 1. Open the project
+
+Open a terminal in the project root:
+
 ```bash
-cd backend
-dotnet restore
-dotnet run
+cd barinda-software-engineer-portfolio
 ```
-Backend: http://localhost:5000
-Swagger: http://localhost:5000/swagger
-
-## Frontend
-Open a second terminal:
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Frontend: http://localhost:5173
-
-The frontend reads profile, skills, experience and projects from the ASP.NET Core API. Contact form submissions are sent to `/api/contact`.
-
-## Content
-Edit backend/data/profile.json, skills.json, experiences.json and projects.json. Put images in backend/data/images/.

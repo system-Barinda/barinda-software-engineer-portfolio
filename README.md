@@ -1,50 +1,38 @@
-# Barinda Software Engineer Portfolio — Frontend
+# Barinda Software Engineer Portfolio
 
-Professional portfolio frontend built with **React, TypeScript, Tailwind CSS, Vite and Lucide icons**.
+A professional personal portfolio built to showcase my software engineering skills, experience, projects and technical capabilities.
 
-## Run
+## Tech Stack
 
-```bash
-npm install
-npm run dev
-```
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- Lucide React
+- JSON
+- Git & GitHub
 
-Open `http://localhost:5173`.
+## Features
 
-The Vite development server proxies `/api` and `/images` to the ASP.NET Core backend at `http://localhost:5000`.
-
-## Build
-
-```bash
-npm run build
-```
-
-## Sections
-
-- Hero
-- About
-- Skills
-- Projects
-- Experience
+- Modern professional UI
+- Responsive design
+- Mobile navigation
+- Hero section
+- About section
+- Technical skills
+- Professional experience
+- Project showcase
 - Engineering capabilities
-- Contact
-- Responsive mobile navigation
+- Contact section
+- GitHub and LinkedIn links
+- JSON-based portfolio content
+- Reusable React components
+- TypeScript type safety
 
-## Backend connection
+## Run Locally
 
-Start the ASP.NET Core backend first:
-
-```bash
-cd ../backend
-dotnet run
-```
-
-Then run the frontend in another terminal:
+Clone the repository:
 
 ```bash
-cd ../frontend
-npm install
-npm run dev
+git clone https://github.com/YOUR_USERNAME/barinda-software-engineer-portfolio.git
 ```
-
-Portfolio content is loaded from the backend JSON files.
