@@ -1,26 +1,610 @@
-import {useEffect,useState} from "react";import {ArrowDown,ArrowUpRight,Code2,Database,Globe2,Github,Linkedin,Mail,MapPin,Menu,Send,Server,ShieldCheck,Sparkles,X} from "lucide-react";import {getExperiences,getProfile,getProjects,getSkills,sendContact} from "./api";import type {Experience,Profile,Project,Skill} from "./types";
-const fallback:Profile={name:"Barinda System Sylvere",headline:"Software Engineer",summary:"I build reliable, maintainable and scalable software with a focus on backend engineering, APIs, testing and clean architecture.",location:"Rwanda"};
-const defaultSkills:Skill[]=[{category:"Languages",items:["C#","TypeScript","JavaScript","SQL"]},{category:"Backend",items:["ASP.NET Core","Node.js","REST APIs","Authentication","Authorization"]},{category:"Frontend",items:["React","TypeScript","Tailwind CSS","Responsive UI"]},{category:"Data",items:["PostgreSQL","MySQL","Database Design"]},{category:"Testing",items:["Unit Testing","Integration Testing","API Testing","Clean Code"]},{category:"DevOps",items:["Git","GitHub Actions","Docker","Linux"]}];
-function App(){const[p,setP]=useState(fallback),[skills,setSkills]=useState(defaultSkills),[projects,setProjects]=useState<Project[]>([]),[exp,setExp]=useState<Experience[]>([]),[open,setOpen]=useState(false),[sent,setSent]=useState(false);
-useEffect(()=>{getProfile().then(setP).catch(()=>{});getSkills().then(setSkills).catch(()=>{});getProjects().then(setProjects).catch(()=>{});getExperiences().then(setExp).catch(()=>{})},[]);
-async function contact(e:React.FormEvent<HTMLFormElement>){e.preventDefault();const f=new FormData(e.currentTarget);const r=await sendContact({name:String(f.get("name")),email:String(f.get("email")),subject:String(f.get("subject")),message:String(f.get("message"))});if(r.ok){setSent(true);e.currentTarget.reset()}}
-const links=[["About","#about"],["Skills","#skills"],["Projects","#projects"],["Experience","#experience"],["Contact","#contact"]];
-return <div className="page"><header><nav><a className="logo" href="#home"><span>&lt;</span>barinda<span>/&gt;</span></a><div className="navlinks">{links.map(([x,h])=><a href={h} key={h}>{x}</a>)}</div><button className="menu" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button></nav>{open&&<div className="mobile">{links.map(([x,h])=><a href={h} onClick={()=>setOpen(false)} key={h}>{x}</a>)}</div>}</header>
-<main><section id="home" className="hero"><div className="gridbg"/><div className="heroContent"><div><p className="eyebrow">HELLO, I'M</p><h1>{p.name}<b>{p.headline}</b></h1><p className="lead">{p.summary}</p><div className="buttons"><a className="primary" href="#projects">Explore my work <ArrowDown/></a><a className="secondary" href="#contact">Contact me <ArrowUpRight/></a></div><div className="meta"><span><MapPin/> {p.location}</span><span><Code2/> Clean architecture</span><span><ShieldCheck/> Quality focused</span></div></div><div className="codeCard"><div className="dots"><i/><i/><i/></div><pre>{`const engineer = {
+import { useEffect, useState } from "react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Code2,
+  Database,
+  Globe2,
+  Github,
+  Mail,
+  MapPin,
+  Menu,
+  Server,
+  ShieldCheck,
+  Sparkles,
+  X,
+} from "lucide-react";
+
+import { getExperiences, getProfile, getProjects, getSkills } from "./api";
+
+import type { Experience, Profile, Project, Skill } from "./types";
+
+const fallbackProfile: Profile = {
+  name: "Barinda System Sylvere",
+  firstName: "Barinda",
+  lastName: "System Sylvere",
+  headline: "Software Engineer",
+  tagline: "Building reliable, scalable and maintainable software.",
+  summary:
+    "I am a software engineer passionate about building reliable web applications, well-designed APIs and maintainable software systems.",
+  location: "Rwanda",
+  availability: "Available for opportunities",
+  email: "your-email@example.com",
+  phone: "",
+  githubUrl: "",
+  linkedInUrl: "",
+  twitterUrl: "",
+  cvUrl: "",
+  profileImage: "/data/images/profile.jpg",
+  yearsOfExperience: 2,
+  primarySkills: ["TypeScript", "React", "Node.js", "C#", "PostgreSQL"],
+};
+
+const defaultSkills: Skill[] = [
+  {
+    category: "Programming Languages",
+    description:
+      "Languages I use to build applications and solve engineering problems.",
+    skills: [
+      { name: "TypeScript", level: "Advanced" },
+      { name: "JavaScript", level: "Advanced" },
+      { name: "C#", level: "Intermediate" },
+      { name: "SQL", level: "Intermediate" },
+    ],
+  },
+  {
+    category: "Frontend Development",
+    description: "Building responsive and maintainable user interfaces.",
+    skills: [
+      { name: "React", level: "Advanced" },
+      { name: "TypeScript", level: "Advanced" },
+      { name: "Tailwind CSS", level: "Advanced" },
+      { name: "Responsive Design", level: "Advanced" },
+    ],
+  },
+  {
+    category: "Backend Development",
+    description: "Designing APIs and application business logic.",
+    skills: [
+      { name: "Node.js", level: "Intermediate" },
+      { name: "REST APIs", level: "Advanced" },
+      { name: "API Design", level: "Advanced" },
+      { name: "Authentication", level: "Intermediate" },
+    ],
+  },
+  {
+    category: "Databases",
+    description: "Working with structured data and persistence systems.",
+    skills: [
+      { name: "PostgreSQL", level: "Intermediate" },
+      { name: "MySQL", level: "Intermediate" },
+      { name: "SQL", level: "Intermediate" },
+      { name: "Database Design", level: "Intermediate" },
+    ],
+  },
+  {
+    category: "Software Engineering",
+    description:
+      "Practices that help me build maintainable and reliable software.",
+    skills: [
+      { name: "Clean Code", level: "Advanced" },
+      { name: "Clean Architecture", level: "Intermediate" },
+      { name: "SOLID Principles", level: "Intermediate" },
+      { name: "Unit Testing", level: "Intermediate" },
+      { name: "Integration Testing", level: "Intermediate" },
+    ],
+  },
+  {
+    category: "DevOps & Tools",
+    description: "Tools I use to develop, test and deliver software.",
+    skills: [
+      { name: "Git", level: "Advanced" },
+      { name: "GitHub", level: "Advanced" },
+      { name: "Docker", level: "Intermediate" },
+      { name: "GitHub Actions", level: "Intermediate" },
+      { name: "Linux", level: "Intermediate" },
+    ],
+  },
+];
+
+function App() {
+  const [profile, setProfile] = useState<Profile>(fallbackProfile);
+
+  const [skills, setSkills] = useState<Skill[]>(defaultSkills);
+
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [contactSent, setContactSent] = useState(false);
+
+  useEffect(() => {
+    getProfile()
+      .then(setProfile)
+      .catch((error) => console.error("Failed to load profile:", error));
+
+    getSkills()
+      .then(setSkills)
+      .catch((error) => console.error("Failed to load skills:", error));
+
+    getProjects()
+      .then(setProjects)
+      .catch((error) => console.error("Failed to load projects:", error));
+
+    getExperiences()
+      .then(setExperiences)
+      .catch((error) => console.error("Failed to load experiences:", error));
+  }, []);
+
+  const handleContact = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const name = String(formData.get("name") ?? "");
+
+    const email = String(formData.get("email") ?? "");
+
+    const subject = String(formData.get("subject") ?? "");
+
+    const message = String(formData.get("message") ?? "");
+
+    const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    )}`;
+
+    window.location.href = mailto;
+
+    setContactSent(true);
+    form.reset();
+  };
+
+  const navigation = [
+    ["About", "#about"],
+    ["Skills", "#skills"],
+    ["Projects", "#projects"],
+    ["Experience", "#experience"],
+    ["Contact", "#contact"],
+  ];
+
+  return (
+    <div className="page">
+      <header>
+        <nav>
+          <a className="logo" href="#home">
+            <span>&lt;</span>
+            barinda
+            <span>/&gt;</span>
+          </a>
+
+          <div className="navlinks">
+            {navigation.map(([label, href]) => (
+              <a href={href} key={href}>
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <button
+            className="menu"
+            onClick={() => setMenuOpen((value) => !value)}
+            aria-label="Toggle navigation"
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
+        </nav>
+
+        {menuOpen && (
+          <div className="mobile">
+            {navigation.map(([label, href]) => (
+              <a href={href} key={href} onClick={() => setMenuOpen(false)}>
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <main>
+        <section id="home" className="hero">
+          <div className="gridbg" />
+
+          <div className="heroContent">
+            <div>
+              <p className="eyebrow">HELLO, I'M</p>
+
+              <h1>
+                {profile.name}
+                <b>{profile.headline}</b>
+              </h1>
+
+              <p className="lead">{profile.summary}</p>
+
+              <div className="buttons">
+                <a className="primary" href="#projects">
+                  Explore my work
+                  <ArrowDown />
+                </a>
+
+                <a className="secondary" href="#contact">
+                  Contact me
+                  <ArrowUpRight />
+                </a>
+              </div>
+
+              <div className="meta">
+                <span>
+                  <MapPin />
+                  {profile.location}
+                </span>
+
+                <span>
+                  <Code2 />
+                  Clean code
+                </span>
+
+                <span>
+                  <ShieldCheck />
+                  Quality focused
+                </span>
+              </div>
+            </div>
+
+            <div className="codeCard">
+              <div className="dots">
+                <i />
+                <i />
+                <i />
+              </div>
+
+              <pre>{`const engineer = {
   name: "Barinda",
-  focus: "Software Engineering",
-  craft: [
-    "APIs", "Testing",
-    "Architecture", "React",
-    "TypeScript", "C#"
+  role: "Software Engineer",
+  focus: [
+    "Architecture",
+    "React",
+    "TypeScript",
+    "APIs",
+    "Testing",
+    "Databases"
   ]
-}`}</pre></div></div></section>
-<section id="about"><div className="wrap"><Heading n="01 / ABOUT" title="Engineering with purpose." text="I care about the parts of software that make products dependable: clear architecture, thoughtful APIs, useful tests, secure access and code that remains understandable as a project grows."/><div className="cards">{[[Server,"Backend","APIs and business logic with validation, authorization and predictable errors."],[Database,"Data & APIs","Structured persistence, clear contracts and maintainable data access."],[Sparkles,"Engineering craft","Testing, documentation, review and deliberate engineering decisions."]].map(([I,t,d])=>{const Icon=I as typeof Server;return <article className="card" key={String(t)}><Icon/><h3>{String(t)}</h3><p>{String(d)}</p></article>})}</div></div></section>
-<section id="skills"><div className="wrap"><Heading n="02 / SKILLS" title="Tools I use to build." text="A practical stack focused on modern web development, backend engineering and software quality."/><div className="skillgrid">{skills.map(s=><article className="card" key={s.category}><h3>{s.category}</h3><div className="tags">{s.items.map(x=><span key={x}>{x}</span>)}</div></article>)}</div></div></section>
-<section id="projects"><div className="wrap"><Heading n="03 / SELECTED WORK" title="Projects that demonstrate how I think." text="Real projects are where engineering decisions become visible."/><div className="projectgrid">{projects.length?projects.map(x=><ProjectCard p={x} key={x.id}/>):<article className="card"><p>Add projects in backend/data/projects.json.</p></article>}</div></div></section>
-<section id="experience"><div className="wrap"><Heading n="04 / EXPERIENCE" title="My professional journey."/><div className="timeline">{exp.length?exp.map(x=><article key={x.id}><small>{x.period}</small><h3>{x.role}</h3><b>{x.company}</b><p>{x.description}</p><ul>{x.achievements.map(a=><li key={a}>{a}</li>)}</ul></article>):<article className="card"><p>Add experience in backend/data/experiences.json.</p></article>}</div></div></section>
-<section className="stripe"><div className="wrap mini">{[[Globe2,"Web Engineering","Responsive interfaces backed by clean APIs."],[Database,"Data & APIs","Validation, persistence and predictable contracts."],[ShieldCheck,"Quality & Security","Testing, authentication and authorization."]].map(([I,t,d])=>{const Icon=I as typeof Globe2;return <article className="card" key={String(t)}><Icon/><h3>{String(t)}</h3><p>{String(d)}</p></article>})}</div></section>
-<section id="contact"><div className="wrap contact"><div><Heading n="05 / CONTACT" title="Let's build something useful." text="Have a project, opportunity or technical conversation in mind? Send me a message."/><div className="contactlinks">{p.email&&<a href={"mailto:"+p.email}><Mail/> {p.email}</a>}{p.githubUrl&&<a href={p.githubUrl}><Github/> GitHub <ArrowUpRight/></a>}{p.linkedInUrl&&<a href={p.linkedInUrl}><Linkedin/> LinkedIn <ArrowUpRight/></a>}</div></div><form className="form" onSubmit={contact}><div className="twocol"><label>Name<input name="name" required placeholder="Your name"/></label><label>Email<input name="email" required type="email" placeholder="you@example.com"/></label></div><label>Subject<input name="subject" required placeholder="Let's work together"/></label><label>Message<textarea name="message" required minLength={5} rows={6} placeholder="Tell me about your project..."/></label><button className="primary" type="submit">Send message <Send/></button>{sent&&<p className="success">Message sent successfully.</p>}</form></div></section></main><footer><div className="wrap"><span>© {new Date().getFullYear()} {p.name}</span><span>React · TypeScript · Tailwind CSS · ASP.NET Core</span></div></footer></div>}
-function Heading({n,title,text}:{n:string;title:string;text?:string}){return <div className="heading"><small>{n}</small><h2>{title}</h2>{text&&<p>{text}</p>}</div>}
-function ProjectCard({p}:{p:Project}){return <article className="project card"><div className="projectImg">{p.image?<img src={p.image} alt={p.title}/>:<span>{"{ }"}</span>}{p.featured&&<em>Featured</em>}</div><div className="projectBody"><h3>{p.title}</h3><p>{p.summary}</p><div className="tags">{p.technologies.map(x=><span key={x}>{x}</span>)}</div><div className="projectLinks">{p.githubUrl&&<a href={p.githubUrl}><Github/> Code</a>}{p.liveUrl&&<a href={p.liveUrl}>Live <ArrowUpRight/></a>}</div></div></article>}
+};`}</pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="about">
+          <div className="wrap">
+            <Heading
+              n="01 / ABOUT"
+              title="Engineering with purpose."
+              text="I care about the parts of software that make products dependable: clear architecture, thoughtful APIs, useful tests, secure access and code that remains understandable as a project grows."
+            />
+
+            <div className="cards">
+              <InfoCard
+                icon={Server}
+                title="Software Engineering"
+                description="Building maintainable applications with clear architecture, reusable components and clean code."
+              />
+
+              <InfoCard
+                icon={Database}
+                title="Data & APIs"
+                description="Designing structured data models and reliable APIs with clear contracts and validation."
+              />
+
+              <InfoCard
+                icon={Sparkles}
+                title="Engineering Craft"
+                description="Continuous learning, testing, code review, documentation and deliberate engineering decisions."
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="skills">
+          <div className="wrap">
+            <Heading
+              n="02 / SKILLS"
+              title="Tools I use to build."
+              text="A practical technology stack focused on modern web development, software engineering and reliable applications."
+            />
+
+            <div className="skillgrid">
+              {skills.map((skill) => (
+                <article className="card" key={skill.category}>
+                  <h3>{skill.category}</h3>
+
+                  <p>{skill.description}</p>
+
+                  <div className="tags">
+                    {skill.skills.map((item) => (
+                      <span key={item.name}>{item.name}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div className="wrap">
+            <Heading
+              n="03 / SELECTED WORK"
+              title="Projects that demonstrate how I think."
+              text="Real projects are where engineering decisions become visible."
+            />
+
+            <div className="projectgrid">
+              {projects.length > 0 ? (
+                projects.map((project) => (
+                  <ProjectCard project={project} key={project.id} />
+                ))
+              ) : (
+                <article className="card">
+                  <p>No projects available yet.</p>
+                </article>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <div className="wrap">
+            <Heading
+              n="04 / EXPERIENCE"
+              title="My professional journey."
+              text="A timeline of my professional growth and software engineering experience."
+            />
+
+            <div className="timeline">
+              {experiences.length > 0 ? (
+                experiences.map((experience) => (
+                  <article key={experience.id}>
+                    <small>{experience.period}</small>
+
+                    <h3>{experience.role}</h3>
+
+                    <b>{experience.company}</b>
+
+                    <p>{experience.description}</p>
+
+                    <ul>
+                      {experience.responsibilities.map((responsibility) => (
+                        <li key={responsibility}>{responsibility}</li>
+                      ))}
+                    </ul>
+
+                    {experience.technologies.length > 0 && (
+                      <div className="tags">
+                        {experience.technologies.map((technology) => (
+                          <span key={technology}>{technology}</span>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                ))
+              ) : (
+                <article className="card">
+                  <p>No experience information available yet.</p>
+                </article>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section className="stripe">
+          <div className="wrap mini">
+            <InfoCard
+              icon={Globe2}
+              title="Web Engineering"
+              description="Responsive and accessible interfaces using modern frontend technologies."
+            />
+
+            <InfoCard
+              icon={Database}
+              title="Data & APIs"
+              description="Structured data, API design, validation and reliable application logic."
+            />
+
+            <InfoCard
+              icon={ShieldCheck}
+              title="Quality & Security"
+              description="Testing, validation, secure development and maintainable code."
+            />
+          </div>
+        </section>
+
+        <section id="contact">
+          <div className="wrap contact">
+            <div>
+              <Heading
+                n="05 / CONTACT"
+                title="Let's build something useful."
+                text="Have a project, opportunity or technical conversation in mind? I'd be happy to hear from you."
+              />
+
+              <div className="contactlinks">
+                {profile.email && (
+                  <a href={`mailto:${profile.email}`}>
+                    <Mail />
+                    {profile.email}
+                  </a>
+                )}
+
+                {profile.githubUrl && (
+                  <a href={profile.githubUrl} target="_blank" rel="noreferrer">
+                    <Github />
+                    GitHub
+                    <ArrowUpRight />
+                  </a>
+                )}
+
+                {profile.linkedInUrl && (
+                  <a
+                    href={profile.linkedInUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span aria-hidden="true">in</span>
+                    LinkedIn
+                    <ArrowUpRight />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <form className="form" onSubmit={handleContact}>
+              <div className="twocol">
+                <label>
+                  Name
+                  <input name="name" required placeholder="Your name" />
+                </label>
+
+                <label>
+                  Email
+                  <input
+                    name="email"
+                    required
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                </label>
+              </div>
+
+              <label>
+                Subject
+                <input
+                  name="subject"
+                  required
+                  placeholder="Let's work together"
+                />
+              </label>
+
+              <label>
+                Message
+                <textarea
+                  name="message"
+                  required
+                  minLength={5}
+                  rows={6}
+                  placeholder="Tell me about your project..."
+                />
+              </label>
+
+              <button className="primary" type="submit">
+                Send message
+                <ArrowUpRight />
+              </button>
+
+              {contactSent && (
+                <p className="success">
+                  Your email application should open now.
+                </p>
+              )}
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="wrap">
+          <span>
+            © {new Date().getFullYear()} {profile.name}
+          </span>
+
+          <span>React · TypeScript · Tailwind CSS · Vite</span>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function InfoCard({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: typeof Server;
+  title: string;
+  description: string;
+}) {
+  return (
+    <article className="card">
+      <Icon />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </article>
+  );
+}
+
+function Heading({
+  n,
+  title,
+  text,
+}: {
+  n: string;
+  title: string;
+  text?: string;
+}) {
+  return (
+    <div className="heading">
+      <small>{n}</small>
+      <h2>{title}</h2>
+      {text && <p>{text}</p>}
+    </div>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="project card">
+      <div className="projectImg">
+        {project.image ? (
+          <img src={project.image} alt={project.title} />
+        ) : (
+          <span>{"{ }"}</span>
+        )}
+
+        {project.featured && <em>Featured</em>}
+      </div>
+
+      <div className="projectBody">
+        <h3>{project.title}</h3>
+
+        <p>{project.summary}</p>
+
+        <div className="tags">
+          {project.technologies.map((technology) => (
+            <span key={technology}>{technology}</span>
+          ))}
+        </div>
+
+        <div className="projectLinks">
+          {project.githubUrl && (
+            <a href={project.githubUrl} target="_blank" rel="noreferrer">
+              <Github />
+              Code
+            </a>
+          )}
+
+          {project.liveUrl && (
+            <a href={project.liveUrl} target="_blank" rel="noreferrer">
+              Live
+              <ArrowUpRight />
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default App;
