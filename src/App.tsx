@@ -1,21 +1,120 @@
-import { useEffect, useState } from "react";
 import {
-  ArrowDown,
-  ArrowUpRight,
-  Code2,
-  Database,
-  Globe2,
-  // Github,
-  Mail,
-  MapPin,
-  Menu,
-  Server,
-  ShieldCheck,
-  Sparkles,
-  X,
-} from "lucide-react";
+  useEffect,
+  useState,
+  type ComponentType,
+  type SVGProps,
+} from "react";
 
 import { getExperiences, getProfile, getProjects, getSkills } from "./api";
+
+function IconBase(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    />
+  );
+}
+
+const ArrowDown = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M12 4v12" />
+    <path d="m6 18 6 6 6-6" />
+  </IconBase>
+);
+
+const ArrowUpRight = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M7 17 17 7" />
+    <path d="M8 7h9v9" />
+  </IconBase>
+);
+
+const Code2 = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="m9 8-5 4 5 4" />
+    <path d="m15 8 5 4-5 4" />
+    <path d="m13 4-2 16" />
+  </IconBase>
+);
+
+const Database = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <ellipse cx="12" cy="5" rx="7" ry="3" />
+    <path d="M5 5v8c0 1.7 3.1 3 7 3s7-1.3 7-3V5" />
+    <path d="M5 13v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+  </IconBase>
+);
+
+const Globe2 = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18" />
+    <path d="M12 3a15 15 0 0 1 0 18" />
+    <path d="M12 3a15 15 0 0 0 0 18" />
+  </IconBase>
+);
+
+const Mail = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m4 7 8 6 8-6" />
+  </IconBase>
+);
+
+const MapPin = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M12 21s6-5.7 6-12a6 6 0 1 0-12 0c0 6.3 6 12 6 12Z" />
+    <circle cx="12" cy="9" r="2.5" />
+  </IconBase>
+);
+
+const Menu = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M3 6h18" />
+    <path d="M3 12h18" />
+    <path d="M3 18h18" />
+  </IconBase>
+);
+
+const Server = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <rect x="4" y="4" width="16" height="6" rx="2" />
+    <rect x="4" y="14" width="16" height="6" rx="2" />
+    <path d="M8 7h.01" />
+    <path d="M8 17h.01" />
+    <path d="M12 7h4" />
+    <path d="M12 17h4" />
+  </IconBase>
+);
+
+const ShieldCheck = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M12 3 5 6v6c0 4.2 2.7 7.7 7 9 4.3-1.3 7-4.8 7-9V6l-7-3Z" />
+    <path d="m9 12 2 2 4-5" />
+  </IconBase>
+);
+
+const Sparkles = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="m12 2 1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z" />
+    <path d="M19 14l.9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14Z" />
+    <path d="M5 14l.9 2.1L8 17l-2.1.9L5 20l-.9-2.1L2 17l2.1-.9L5 14Z" />
+  </IconBase>
+);
+
+const X = (props: SVGProps<SVGSVGElement>) => (
+  <IconBase {...props}>
+    <path d="M5 5 19 19" />
+    <path d="M19 5 5 19" />
+  </IconBase>
+);
 
 import type { Experience, Profile, Project, Skill } from "./types";
 import { fallbackProfile, defaultSkills } from "./info";
